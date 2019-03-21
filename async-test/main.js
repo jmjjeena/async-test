@@ -9,5 +9,42 @@ CONSTRAINTS
 - No editing any file except main.js
 */
 
+var getNumLessThanTen = require("./getNumLessThan");
+var waitOneSecond = require("./waitOneSecond");
+var writeToFile = require("./writeToFile");
 
+getNumLessThanTen((err, randomNumber) => {
+  if(err) {
+    console.log(err);
+  } else {
+    waitOneSecond((err, result) => {
+      if(err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        waitOneSecond((err, result) => {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(result);
+            waitOneSecond((err, result) => {
+              if(err) {
+                console.log(err);
+              } else {
+                console.log(result);
+                writeToFile(randomNumber, (err, result) => {
+                  if (err) {
+                    console.log(err)
+                  } else {
+                    console.log(result);
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  }
+});
 
